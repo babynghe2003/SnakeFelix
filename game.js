@@ -20,12 +20,13 @@ class game {
     setTimeout(() =>this.loop(),100);
   }
   update() {
-  
+    if (!this.snake.checkEnd()) this.keyHandle();
+    else{
     this.snake.update();
     if (this.snake.x == this.apple.x && this.snake.y == this.apple.y){
     this.apple.update();
     this.snake.maxCells++;
-    
+    }
     }
   }
   draw() {
@@ -43,13 +44,14 @@ class game {
       this.context.font = "40px Ink Free";
       this.context.fillStyle = "green";
       this.context.fillText('Press Space to start!', 130,400);
-      document.getElementByIdaddEventListener('keydown', (e) => {
-        if(e.key == " "){
-            location.reload();
-        }
-    })
     }
   }
+    keyHandle() {
+    document.addEventListener("keydown", (e) => {
+      if (e.which == 32)  location.reload();
+    });    
+  }
 }
+
 
 var g = new game();
