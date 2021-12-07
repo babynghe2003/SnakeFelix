@@ -43,7 +43,7 @@ class game {
       this.context.font = "40px Ink Free";
       this.context.fillStyle = "green";
       this.context.fillText('Press Space to start!', 130,400);
-      window.addEventListener('keydown', (e) => {
+      document.getElementByIdaddEventListener('keydown', (e) => {
         if(e.key == " "){
             location.reload();
         }
