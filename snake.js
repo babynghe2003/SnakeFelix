@@ -45,16 +45,16 @@ class snake {
 
   catchHandle() {
     document.addEventListener("keydown", (e) => {
-      if (e.which == 37 && this.dx != this.grid) { // Left
+      if (e.which == 37 && this.dx != this.grid && this.y != this.cells[1].y) { // Left
         this.dx = -this.grid;
         this.dy = 0;
-      } else if (e.which == 38 && this.dy != this.grid) { // UP
+      } else if (e.which == 38 && this.dy != this.grid && this.x != this.cells[1].x) { // UP
         this.dx = 0;
         this.dy = -this.grid;
-      } else if (e.which == 39 && this.dx != -this.grid) { // RIGHT
+      } else if (e.which == 39 && this.dx != -this.grid && this.y != this.cells[1].y) { // RIGHT
         this.dx = this.grid;
         this.dy = 0;
-      } else if (e.which == 40 && this.dy != -this.grid) { // DOWN
+      } else if (e.which == 40 && this.dy != -this.grid && this.x != this.cells[1].x) { // DOWN
         this.dy = this.grid;
         this.dx = 0;
       }
