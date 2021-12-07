@@ -10,10 +10,10 @@ class snake {
     this.maxCells = 6;
   }
   update() {
-    // if (this.checkEnd()){
+    if (this.checkEnd()){
     this.x += this.dx;
     this.y += this.dy;
-    // }
+    }
     // Di xuyen tuong
     if (this.x >= this.game.canvas.width){
         this.x = 0;
