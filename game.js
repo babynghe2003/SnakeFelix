@@ -17,41 +17,44 @@ class game {
   loop() {
     this.update();
     this.draw();
-    setTimeout(() =>this.loop(),100);
+    setTimeout(() => this.loop(), 100);
   }
   update() {
     if (!this.snake.checkEnd()) this.keyHandle();
-    else{
-    this.snake.update();
-    if (this.snake.x == this.apple.x && this.snake.y == this.apple.y){
-    this.apple.update();
-    this.snake.maxCells++;
-    }
+    else {
+      this.snake.update();
+      if (this.snake.x == this.apple.x && this.snake.y == this.apple.y) {
+        this.apple.update(this.snake.getCell());
+        this.snake.maxCells++;
+      }
     }
   }
   draw() {
-    if (this.snake.checkEnd()){
-    this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
-    this.snake.draw();
-    this.apple.draw();
-    this.context.fillStyle = "orange";
-    this.context.font = "20px Ink Free";
-    this.context.fillText("Your Score : "+(this.snake.maxCells - 6),5,25);
-    }else {
+    if (this.snake.checkEnd()) {
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.snake.draw();
+      this.apple.draw();
+      this.context.fillStyle = "orange";
+      this.context.font = "20px Ink Free";
+      this.context.fillText("Your Score : " + (this.snake.maxCells - 6), 5, 25);
+    } else {
       this.context.fillStyle = "red";
       this.context.font = "40px Ink Free";
-      this.context.fillText("Your Score : "+(this.snake.maxCells - 6), 180,300);
+      this.context.fillText(
+        "Your Score : " + (this.snake.maxCells - 6),
+        180,
+        300
+      );
       this.context.font = "40px Ink Free";
       this.context.fillStyle = "green";
-      this.context.fillText('Press Space to start!', 130,400);
+      this.context.fillText("Press Space to start!", 130, 400);
     }
   }
-    keyHandle() {
+  keyHandle() {
     document.addEventListener("keydown", (e) => {
-      if (e.which == 32)  location.reload();
-    });    
+      if (e.which == 32) location.reload();
+    });
   }
 }
-
 
 var g = new game();

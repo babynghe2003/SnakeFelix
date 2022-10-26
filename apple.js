@@ -6,9 +6,12 @@ class apple {
     this.grid = 25;
     this.update();
   }
-  update() {
-    this.x = (Math.floor(Math.random() * (19 - 0)) + 0) * this.grid;
-    this.y = (Math.floor(Math.random() * (19 - 0)) + 0) * this.grid;
+  update(cells = []) {
+    do{
+      this.x = (Math.floor(Math.random() * (19 - 0)) + 0) * this.grid;
+      this.y = (Math.floor(Math.random() * (19 - 0)) + 0) * this.grid;
+    }while(cells.includes({x:this.x,y:this.y}));
+    console.log(cells)
   }
   draw() {
     this.game.context.fillStyle = "red";

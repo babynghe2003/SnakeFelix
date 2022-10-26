@@ -34,6 +34,9 @@ class snake {
     }
     this.catchHandle();
   }
+  getCell(){
+    return this.cells;
+  }
   draw() {
       for (var i = 0; i < this.cells.length; i++){
         if (i == 0) this.game.context.fillStyle = "orange";
